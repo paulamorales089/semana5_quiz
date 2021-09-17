@@ -32,10 +32,11 @@ public class preparacion extends AppCompatActivity {
          botonContinuarPreparacion3.setOnClickListener(
                 (v)->{
                    paraSumarPuntajes();
-                   puntajeTotal1 = puntaje1 + puntaje2 + puntaje3;
+
                     //finalScore = evaluationScore + activityScore;
 
                     if (checkBoxAct1.isChecked() || checkBoxAct2.isChecked() || checkBoxAct3.isChecked()){
+                        puntajeTotal1 = puntaje1 + puntaje2 + puntaje3;
                         //botonContinuarPreparacion3.setEnabled(true);
                         Intent autoevaluacion = new Intent(this, autoEvaluacion.class);
                         autoevaluacion.putExtra("puntajeTotal1", puntajeTotal1);

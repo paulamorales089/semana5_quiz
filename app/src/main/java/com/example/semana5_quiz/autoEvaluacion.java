@@ -29,11 +29,13 @@ public class autoEvaluacion extends AppCompatActivity {
         botonFinalizar.setOnClickListener(
                 (v)->{
                     paraSumarPuntajes2();
-                    puntajeTotal2 = puntaje4 + puntaje5 + puntaje6;
-                    puntajeFinal = puntajeTotal1 + puntajeTotal2;
+
                     //finalScore = evaluationScore + activityScore;
 
                     if (checkBoxAct4.isChecked() || checkBoxAct5.isChecked() || checkBoxAct6.isChecked()){
+                        puntajeTotal2 = puntaje4 + puntaje5 + puntaje6;
+                        puntajeFinal = puntajeTotal1 + puntajeTotal2;
+
                         Intent autoevaluacion = new Intent(this, autoEvaluacion.class);
                         autoevaluacion.putExtra("puntajeTotal1", puntajeTotal1);
                         startActivity(autoevaluacion);
@@ -51,7 +53,7 @@ public class autoEvaluacion extends AppCompatActivity {
     private void paraSumarPuntajes2() {
 
         if(checkBoxAct4.isChecked()){
-            puntaje4 = 1;
+            puntaje4 = 3;
         }
 
         if(checkBoxAct5.isChecked()){

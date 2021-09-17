@@ -15,7 +15,7 @@ public class nuevoRegistro extends AppCompatActivity {
     private EditText codigoEstudianteEspacio;
     private Button botonContinuarRegistro2;
 
-    private String nombreEstudiante, codigoEstudiante;
+    private String nombreEstudiante, codigoEstudiante, codigoComparacion;
 
     private SharedPreferences preferences;
 
@@ -29,7 +29,6 @@ public class nuevoRegistro extends AppCompatActivity {
         botonContinuarRegistro2 = findViewById(R.id.botonContinuar2);
 
         preferences = getSharedPreferences("nombreYCodigoEstudiante", MODE_PRIVATE);
-
 
         botonContinuarRegistro2.setOnClickListener(
                 (v)-> {
@@ -54,4 +53,10 @@ public class nuevoRegistro extends AppCompatActivity {
         );
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        preferences = getSharedPreferences("nombreYCodigoEstudiante", MODE_PRIVATE);
+
+    }
 }
