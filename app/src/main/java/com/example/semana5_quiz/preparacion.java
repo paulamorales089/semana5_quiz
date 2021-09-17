@@ -13,7 +13,7 @@ public class preparacion extends AppCompatActivity {
 
     private CheckBox checkBoxAct1, checkBoxAct2, checkBoxAct3;
     private Button botonContinuarPreparacion3;
-    private int puntaje1, puntaje2, puntaje3;
+    private int puntaje1, puntaje2, puntaje3,puntajeTotal;
 
 
     @Override
@@ -31,35 +31,47 @@ public class preparacion extends AppCompatActivity {
        /* botonContinuarPreparacion3.setOnClickListener(
                 (view)->{
                 }
+                 //MaterialComponents.DayNight.DarkActionBar
         );*/
 
         botonContinuarPreparacion3.setOnClickListener(
                 (v)->{
 
-
                     if (checkBoxAct1.isChecked() || checkBoxAct2.isChecked() || checkBoxAct3.isChecked()){
 
                         if(checkBoxAct1.isChecked() ){
-                            puntaje1 += 1;
-                            //botonContinuarPreparacion3.setVisibility(View.VISIBLE);
+                            puntaje1 = 1;
+                            botonContinuarPreparacion3.setEnabled(true);
+                        }else {
+                            botonContinuarPreparacion3.setEnabled(false);
                         }
                         if(checkBoxAct2.isChecked() ){
-                            puntaje2 += 3;
-                            //botonContinuarPreparacion3.setVisibility(View.VISIBLE);
+                            puntaje2 = 3;
+                            botonContinuarPreparacion3.setEnabled(true);
+                         }else{
+                            botonContinuarPreparacion3.setEnabled(false);
                         }
                         if(checkBoxAct3.isChecked() ){
-                            puntaje3 += 0;
-                            //botonContinuarPreparacion3.setVisibility(View.VISIBLE);
+                            puntaje3 = 0;
+                            botonContinuarPreparacion3.setEnabled(true);
+                         }else{
+                            botonContinuarPreparacion3.setEnabled(false);
                         }
 
-                        Intent continuar2 = new Intent(this, autoEvaluacion.class);
-                        startActivity(continuar2);
+
+                        puntajeTotal = puntaje1 + puntaje2 + puntaje3 ;
+                        Intent autoevaluacion = new Intent(this, autoEvaluacion.class);
+                        autoevaluacion.putExtra("puntajeTotal",puntajeTotal);
+                        startActivity(autoevaluacion);
                         finish();
 
                         //botonContinuarPreparacion3.setVisibility(View.VISIBLE);
 
                     } else {
                         Toast.makeText(this, "Escoge una opción para poder continuar", Toast.LENGTH_SHORT).show();
+
+
+
 
                     }
                 }
