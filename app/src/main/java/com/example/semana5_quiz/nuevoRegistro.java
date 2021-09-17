@@ -3,6 +3,7 @@ package com.example.semana5_quiz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +17,8 @@ public class nuevoRegistro extends AppCompatActivity {
 
     private String nombreEstudiante, codigoEstudiante;
 
+    private SharedPreferences preferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,21 +28,30 @@ public class nuevoRegistro extends AppCompatActivity {
         codigoEstudianteEspacio = findViewById(R.id.codigoEstudianteEspacio);
         botonContinuarRegistro2 = findViewById(R.id.botonContinuar2);
 
+        preferences = getSharedPreferences("nombreYCodigoEstudiante", MODE_PRIVATE);
+
+
         botonContinuarRegistro2.setOnClickListener(
-                (v)->{
+                (v)-> {
+
                     nombreEstudiante = nombreEstudianteEspacio.getText().toString();
                     codigoEstudiante = codigoEstudianteEspacio.getText().toString();
 
-                    if (nombreEstudiante.isEmpty() || codigoEstudiante.isEmpty() ){
-                        Toast.makeText(this,"Se necesita el nombre y codigo del estudiante para continuar",
+                    if (nombreEstudiante.isEmpty() || codigoEstudiante.isEmpty()) {
+                        Toast.makeText(this, "Se necesita el nombre y codigo del estudiante para continuar",
                                 Toast.LENGTH_LONG).show();
-                    } else if (!nombreEstudiante.isEmpty() || !codigoEstudiante.isEmpty()) {
+                    } else{
+
+                        preferences.edit().toString("nombreEstudiante",nombreEstudiante).apply();
+                        preferences.edit().toString("codigoEstudiante",codigoEstudiante).apply();
+
                         Intent continuar = new Intent(this, preparacion.class);
                         startActivity(continuar);
                         finish();
+                }
 
-                    }
                 }
         );
     }
+
 }

@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button botonRegistro1;
 
+    private String nombre, puntajeFinal, codigo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         botonRegistro1.setOnClickListener(
                 (v)->{
+
                     Intent registro = new Intent(this,nuevoRegistro.class);
                     startActivity(registro);
 
